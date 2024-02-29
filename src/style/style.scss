@@ -1,0 +1,344 @@
+@import 'fonts';
+@import 'reset';
+@import 'vars';
+
+body {
+  background: url('../images/patternpad.svg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+
+  &::before {
+    content: '';
+    backdrop-filter: blur(4px);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+}
+
+.messenger {
+  margin-top: 25px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__initial {
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 25px;
+    background: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-40%);
+    display: flex;
+    // display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  // .messenger__input
+
+  &__input {
+    width: 150px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 5px;
+
+    &::placeholder {
+      font-size: 12px;
+      color: rgb(80, 80, 80);
+    }
+
+    @include viewport-md {
+      width: 250px;
+
+      &::placeholder {
+        font-size: 14px;
+        color: rgb(80, 80, 80);
+      }
+    }
+  }
+
+  &__btn {
+    font-weight: 700;
+    color: rgb(240, 240, 240);
+    width: 50%;
+    background: green;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  // .messenger__loader
+
+  &__loader {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-40%);
+    border: 5px solid #d1d0d0;
+    border-top: 5px solid green;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+  }
+
+  &__chat {
+    display: none;
+    // display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 250px;
+
+    @include viewport-md {
+      min-width: 350px;
+    }
+    @include viewport-lg {
+      min-width: 450px;
+    }
+  }
+  // .messenger__output-message
+
+  &__messages {
+    background: white;
+    padding: 10px;
+    height: 60vh;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 0 0 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // .messenger__input-message
+
+  &__input-message {
+    font-family: 'Roboto';
+    font-size: 12px;
+    border-radius: 6px;
+    width: calc(100% - 20px);
+    resize: none;
+    padding: 10px;
+
+    @include viewport-md {
+      font-size: 14px;
+    }
+  }
+
+  &__input-message-btn {
+    font-weight: 700;
+    color: rgb(240, 240, 240);
+    background: #0066bf;
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 20px;
+    align-self: flex-end;
+    cursor: pointer;
+  }
+}
+
+.messages {
+  &__request {
+    align-self: flex-start;
+    position: relative;
+    background: #d8d9d8;
+    padding: 20px 8px;
+    border-radius: 6px 6px 6px 6px;
+
+    word-wrap: break-word;
+
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      background: #d8d9d8;
+      position: absolute;
+      bottom: -5px;
+      left: 10px;
+    }
+  }
+
+  &__header {
+  }
+
+  // .messages__sender
+
+  &__sender {
+    font-size: 10px;
+    font-weight: 700;
+    color: #33a0ff;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+
+    @include viewport-md {
+      font-size: 12px;
+    }
+    @include viewport-lg {
+      font-size: 14px;
+    }
+  }
+
+  // .messages__body
+
+  &__body {
+    min-width: 100px;
+    max-width: 180px;
+    @include viewport-md {
+      max-width: 250px;
+    }
+    @include viewport-lg {
+      max-width: 350px;
+    }
+  }
+
+  // .messages__content
+
+  &__content {
+    font-size: 11px;
+    line-height: 14px;
+    word-wrap: break-word;
+
+    @include viewport-md {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    @include viewport-lg {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  // .messages__footer
+
+  &__footer {
+  }
+
+  // .messages__time
+
+  &__time {
+    font-size: 8px;
+    color: #64af78;
+    font-weight: 700;
+    font-style: italic;
+    position: absolute;
+    right: 5px;
+    bottom: 4px;
+
+    @include viewport-md {
+      font-size: 10px;
+    }
+    @include viewport-lg {
+      font-size: 12px;
+    }
+  }
+
+  // .messages__respond
+
+  &__respond {
+    background: #d8d9d8;
+    padding: 20px 8px;
+    border-radius: 6px 6px 6px 6px;
+    position: relative;
+    align-self: flex-end;
+    position: relative;
+    min-width: 100px;
+
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      background: #d8d9d8;
+      position: absolute;
+      bottom: -5px;
+      right: 10px;
+    }
+  }
+}
+
+.connection {
+  font-size: 10px;
+  font-weight: 700;
+  color: #33a0ff;
+  width: 50%;
+  border-radius: 6px;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+
+  @include viewport-md {
+    width: 60%;
+    font-size: 12px;
+  }
+  @include viewport-lg {
+    font-size: 14px;
+  }
+}
+.disconnection {
+  font-size: 10px;
+  font-weight: 700;
+  color: #33a0ff;
+  width: 50%;
+  border-radius: 6px;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+
+  @include viewport-md {
+    font-size: 12px;
+  }
+  @include viewport-lg {
+    font-size: 14px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  padding: 0 60px;
+  margin: 0 auto;
+  min-width: 250px;
+
+  // від 0 до бескінечності
+
+  @include viewport-md {
+    // від 768 >
+    max-width: 708px;
+  }
+
+  @include viewport-lg {
+    // від 1024 >
+    max-width: 964px;
+  }
+
+  @include viewport-xl {
+    // від 1440 >
+    max-width: 1380px;
+  }
+
+  @include viewport-xll {
+    max-width: 1760px;
+  }
+}
