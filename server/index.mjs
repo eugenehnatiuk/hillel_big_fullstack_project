@@ -14,10 +14,13 @@ server.register(fastifyStatic, {
   root: join(__dirname, '../build'),
 });
 
+// server.get('/pizza-list', (_, reply) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => resolve(pizzaList), 1000);
+//   });
+// });
 server.get('/pizza-list', (_, reply) => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(pizzaList), 1000);
-  });
+  setTimeout(() => reply.send(pizzaList), 1000);
 });
 
 server.get('/pizza-sizes', (_, reply) => {

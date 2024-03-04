@@ -12,6 +12,7 @@ Promise.all([
   .then(([pizzaList, pizzaSizes]) => renderPizzaList(pizzaList, pizzaSizes));
 
 function renderPizzaList(pizzaList, pizzaSizes) {
+  debugger
   pizzaListEl.innerHTML = '';
 
   pizzaList.forEach(({ id, title, url, price, isAvaible }) => {
